@@ -1,5 +1,82 @@
 # Turborepo starter
 
+# Turbo Repo CMD
+
+1. Install
+
+```
+ npm install turbo --global
+```
+
+2. Create new Repo
+
+```
+npx create-turbo@latest
+
+turbo dev   <==== | Run cmd example|
+```
+
+3. Add new App or Package
+
+```
+turbo gen workspace --name fake-package
+```
+
+4. Global package
+
+- In fake-package find package.json in name prop rename to convention
+
+```
+{
+ "name": "@repo/fake-package",
+ "version": "0.0.0",
+ "private": true,
+  "exports": {
+   "./sum": "./src/sum.ts" // add files to export
+ },
+ ....
+ }
+```
+
+5. Copy and name and add it to the app or package that needs it in the dependencies
+
+```
+ "dependencies": {
+   "@repo/ui": "*",
+   "next": "^15.1.6",
+   "react": "^19.0.0",
+   "react-dom": "^19.0.0",
+   "@repo/fake-package": "*"   <==== | Add new package|
+ },
+ ....
+```
+
+6. Add cmd 'example tests'
+7. In root dir find turbo.json add in tasks
+
+```
+   "dev": {
+    "cache": false,
+    "persistent": true
+  },
+  "test": {
+    "cache": true,
+    "dependsOn": ["^test"]
+  }
+```
+
+8. In root dir find package.json add in scripts cmd
+
+```
+  "scripts": {
+  "build": "turbo build",
+  "dev": "turbo dev",
+  "lint": "turbo lint",
+  "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+  "test": "turbo test"  <==== | Add new cmd|
+},
+```
+
 This Turborepo starter is maintained by the Turborepo core team.
 
 ## Using this example
