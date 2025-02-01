@@ -1,7 +1,5 @@
 # Turborepo starter
 
-# Turbo Repo CMD
-
 1. Install
 
 ```
